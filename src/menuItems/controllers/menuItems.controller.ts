@@ -9,6 +9,7 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '../../auth/services/auth.guard';
 import { MenuItemsService } from '../menuItems.service';
 import { MenuItemOutputDto } from './output/menuItemOutputDto';
 import { MenuItemInputDto } from './input/menuItemInputDto';
@@ -27,6 +28,7 @@ export class MenuItemsController {
     return this.menuItemsService.getById(id);
   }
 
+  @UseGuards(AuthGuard)
   @Post('')
   create(
     @Body() menuItemInputDto: MenuItemInputDto,
@@ -34,6 +36,7 @@ export class MenuItemsController {
     return this.menuItemsService.create(menuItemInputDto);
   }
 
+  @UseGuards(AuthGuard)
   @Put('/:id')
   update(
     @Param('id') id: string,
@@ -42,6 +45,7 @@ export class MenuItemsController {
     return this.menuItemsService.update(id, menuItemInputDto);
   }
 
+  @UseGuards(AuthGuard)
   @Delete('/:id')
   delete(@Param('id') id: string): Promise<MenuItemOutputDto | null> {
     return this.menuItemsService.delete(id);
