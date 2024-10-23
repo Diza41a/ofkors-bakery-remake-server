@@ -1,0 +1,37 @@
+{
+  "Monday": {
+    "from": "7:00 am",
+    "to": "7:00 pm",
+    "closed": false
+  },
+  "Tuesday": {
+    "from": "7:00 am",
+    "to": "7:00 pm",
+    "closed": false
+  },
+  "Wednesday": {
+    "from": "7:00 am",
+    "to": "7:00 pm",
+    "closed": false
+  },
+  "Thursday": {
+    "from": "7:00 am",
+    "to": "7:00 pm",
+    "closed": false
+  },
+  "Friday": {
+    "from": "7:00 am",
+    "to": "7:00 pm",
+    "closed": false
+  },
+  "Saturday": {
+    "from": "8:00 am",
+    "to": "5:00 pm",
+    "closed": false
+  },
+  "Sunday": {
+    "from": "7:00 am",
+    "to": "7:00 pm",
+    "closed": true
+  }
+}

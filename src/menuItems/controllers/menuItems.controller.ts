@@ -6,7 +6,6 @@ import {
   Param,
   Post,
   Put,
-  Query,
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '../../auth/services/auth.guard';
@@ -24,14 +23,14 @@ export class MenuItemsController {
     return this.menuItemsService.getAll();
   }
 
-  @Get('/menus')
-  getMenus(): Promise<Array<MenuOutputDto>> {
-    return this.menuItemsService.aggregateMenus();
-  }
-
   @Get('/:id')
   getById(@Param('id') id: string): Promise<MenuItemOutputDto | null> {
     return this.menuItemsService.getById(id);
+  }
+
+  @Get('/menus')
+  getMenus(): Promise<Array<MenuOutputDto>> {
+    return this.menuItemsService.aggregateMenus();
   }
 
   @UseGuards(AuthGuard)
