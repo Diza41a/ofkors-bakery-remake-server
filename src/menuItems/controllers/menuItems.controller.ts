@@ -13,6 +13,7 @@ import { AuthGuard } from '../../auth/services/auth.guard';
 import { MenuItemsService } from '../menuItems.service';
 import { MenuItemOutputDto } from './output/menuItemOutputDto';
 import { MenuItemInputDto } from './input/menuItemInputDto';
+import { MenuOutputDto } from './output/menuOutputDto';
 
 @Controller('menu_items')
 export class MenuItemsController {
@@ -21,6 +22,11 @@ export class MenuItemsController {
   @Get('')
   getAll(): Promise<Array<MenuItemOutputDto>> {
     return this.menuItemsService.getAll();
+  }
+
+  @Get('/menus')
+  getMenus(): Promise<Array<MenuOutputDto>> {
+    return this.menuItemsService.aggregateMenus();
   }
 
   @Get('/:id')

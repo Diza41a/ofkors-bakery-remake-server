@@ -3,6 +3,7 @@ import { MenuItemSchema } from './repositories/menuItem.schema';
 import { MenuItemRepository } from './repositories/menuItem.repository';
 import { MenuItemsService } from './menuItems.service';
 import { MenuItemOutputDtoMapper } from './controllers/output/menuItemOutputDtoMapper';
+import { MenuOutputDtoMapper } from './controllers/output/menuOutputDtoMapper';
 import { MenuItemInputDtoMapper } from './controllers/input/menuItemInputDtoMapper';
 
 export const menuItemProviders = [
@@ -13,6 +14,7 @@ export const menuItemProviders = [
     inject: ['DATABASE_CONNECTION'],
   },
   MenuItemOutputDtoMapper,
+  MenuOutputDtoMapper,
   MenuItemInputDtoMapper,
   MenuItemRepository,
   MenuItemsService,

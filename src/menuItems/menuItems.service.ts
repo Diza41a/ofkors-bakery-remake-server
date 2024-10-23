@@ -4,12 +4,16 @@ import { MenuItemOutputDto } from './controllers/output/menuItemOutputDto';
 import { MenuItemOutputDtoMapper } from './controllers/output/menuItemOutputDtoMapper';
 import { MenuItemInputDtoMapper } from './controllers/input/menuItemInputDtoMapper';
 import { MenuItemInputDto } from './controllers/input/menuItemInputDto';
+import { MenuOutputDto } from './controllers/output/menuOutputDto';
+import { MenuOutputDtoMapper } from './controllers/output/menuOutputDtoMapper';
+import type { MenuCategoryEn } from './repositories/menuItem';
 
 @Injectable()
 export class MenuItemsService {
   constructor(
     private readonly menuItemsRepository: MenuItemRepository,
     private readonly menuItemOutputDtoMapper: MenuItemOutputDtoMapper,
+    private readonly menuOutputDtoMapper: MenuOutputDtoMapper,
     private readonly menuItemInputDtoMapper: MenuItemInputDtoMapper,
   ) {}
 
@@ -20,6 +24,25 @@ export class MenuItemsService {
       this.menuItemOutputDtoMapper.map(menuItemDocument),
     );
     return menuItemOutputDtos;
+  }
+
+  async aggregateMenus(): Promise<Array<MenuOutputDto>> {
+    const menuItemOutputDtos = await this.getAll();
+    const menusOutputDtos: Array<MenuOutputDto> = [];
+    const categories = ['coffee_and_drinks', 'baked_goods', 'breakfast_and_lunch', 'desserts'];
+
+    for (let i = 0; i < categories.length; i += 1) {
+      const menuItems = menuItemOutputDtos.filter(
+        (menuItemOutputDto) => menuItemOutputDto.category.en === categories[i],
+      );
+      const menu = this.menuOutputDtoMapper.map(
+        categories[i] as MenuCategoryEn,
+        menuItems,
+      );
+      menusOutputDtos.push(menu);
+    }
+
+    return menusOutputDtos;
   }
 
   async getById(id: string): Promise<MenuItemOutputDto | null> {
