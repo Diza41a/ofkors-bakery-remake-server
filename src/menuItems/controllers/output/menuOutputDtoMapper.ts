@@ -3,10 +3,10 @@ import { MenuItemOutputDto } from "./menuItemOutputDto";
 import { MenuOutputDto } from "./menuOutputDto";
 
 export class MenuOutputDtoMapper {
-  map(category: MenuCategoryEn, menuItemDocuments: Array<MenuItemOutputDto>): MenuOutputDto {
+  map(category: MenuCategoryEn, menuItemOutputDtos: Array<MenuItemOutputDto>): MenuOutputDto {
     const menuItemOutputDto = new MenuOutputDto(
       category,
-      menuItemDocuments,
+      menuItemOutputDtos,
     );
     return menuItemOutputDto;
   }

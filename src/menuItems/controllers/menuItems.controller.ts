@@ -22,16 +22,17 @@ export class MenuItemsController {
   getAll(): Promise<Array<MenuItemOutputDto>> {
     return this.menuItemsService.getAll();
   }
+  
+  @Get('/menus')
+  getMenus(): Promise<Array<MenuOutputDto>> {
+    return this.menuItemsService.aggregateMenus();
+  }
 
   @Get('/:id')
   getById(@Param('id') id: string): Promise<MenuItemOutputDto | null> {
     return this.menuItemsService.getById(id);
   }
 
-  @Get('/menus')
-  getMenus(): Promise<Array<MenuOutputDto>> {
-    return this.menuItemsService.aggregateMenus();
-  }
 
   @UseGuards(AuthGuard)
   @Post('')
