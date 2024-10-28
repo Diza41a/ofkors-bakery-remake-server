@@ -5,12 +5,7 @@ export type TranslatedField = {
   ru: string;
   uk: string;
 }
-export type MenuCategoryEn = 'coffee_and_drinks' | 'baked_goods' | 'breakfast_and_lunch' | 'desserts';
-export type MenuCategory = {
-  en: MenuCategoryEn;
-  ru: string;
-  uk: string;
-};
+export type MenuCategory = 'coffee_and_drinks' | 'baked_goods' | 'breakfast_and_lunch' | 'desserts';
 
 export interface MenuItemDocument extends Document {
   name: TranslatedField;

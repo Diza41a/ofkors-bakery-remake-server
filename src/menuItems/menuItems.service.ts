@@ -6,7 +6,7 @@ import { MenuItemInputDtoMapper } from './controllers/input/menuItemInputDtoMapp
 import { MenuItemInputDto } from './controllers/input/menuItemInputDto';
 import { MenuOutputDto } from './controllers/output/menuOutputDto';
 import { MenuOutputDtoMapper } from './controllers/output/menuOutputDtoMapper';
-import type { MenuCategoryEn } from './repositories/menuItem';
+import type { MenuCategory } from './repositories/menuItem';
 
 @Injectable()
 export class MenuItemsService {
@@ -33,10 +33,10 @@ export class MenuItemsService {
 
     for (let i = 0; i < categories.length; i += 1) {
       const menuItems = menuItemOutputDtos.filter(
-        (menuItemOutputDto) => menuItemOutputDto.category.en === categories[i],
+        (menuItemOutputDto) => menuItemOutputDto.category === categories[i],
       );
       const menu = this.menuOutputDtoMapper.map(
-        categories[i] as MenuCategoryEn,
+        categories[i] as MenuCategory,
         menuItems,
       );
       menusOutputDtos.push(menu);

@@ -1,12 +1,12 @@
-import type { MenuCategoryEn } from "../../repositories/menuItem";
+import type { MenuCategory } from "../../repositories/menuItem";
 import { MenuItemOutputDto } from "./menuItemOutputDto";
 
 export class MenuOutputDto {
-  category: MenuCategoryEn;
+  category: MenuCategory;
   items: Array<MenuItemOutputDto>;
 
   constructor(
-    category: MenuCategoryEn,
+    category: MenuCategory,
     items: Array<MenuItemOutputDto>,
   ) {
     this.category = category;

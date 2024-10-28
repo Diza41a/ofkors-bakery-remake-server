@@ -1,6 +1,6 @@
 import { Model } from 'mongoose';
 import { Inject, Injectable } from '@nestjs/common';
-import type { MenuCategoryEn, MenuItemDocument } from './menuItem';
+import type { MenuCategory, MenuItemDocument } from './menuItem';
 
 @Injectable()
 export class MenuItemRepository {
@@ -15,7 +15,7 @@ export class MenuItemRepository {
     return menuItemDocuments;
   }
 
-  findByCategory(category: MenuCategoryEn): Promise<Array<MenuItemDocument>> {
+  findByCategory(category: MenuCategory): Promise<Array<MenuItemDocument>> {
     const menuItemDocuments = this.menuItemModel.find({ category });
 
     return menuItemDocuments;
